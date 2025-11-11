@@ -468,7 +468,7 @@ const CalauRecommendations = () => {
             </div>
             <div className="text-right flex flex-col items-end gap-2">
               <span className="text-sm text-gray-500">Made by</span>
-              <img src="./noBgColor (1).png" alt="Made by" className="h-10" />
+              <img src="/noBgColor (1).png" alt="Made by" className="h-10" />
             </div>
           </div>
           <div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full"></div>
