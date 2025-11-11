@@ -4,7 +4,7 @@ import { Download, Image, ShoppingCart, Palette, Globe, Instagram, Target, BarCh
 const CalauRecommendations = () => {
   const [activeSection, setActiveSection] = useState('overview');
   const [brand, setBrand] = useState('Calau Acessórios');
-  const [notes, setNotes] = useState('');
+  const [notes, setNotes] = useState('Linke tem solução para ecommerce, se necessário apenas marque uma reunião com Nathalia para arranjar uma solução');
   const [assetUrls, setAssetUrls] = useState(''); // uma URL por linha
   const printRef = useRef(null);
 
