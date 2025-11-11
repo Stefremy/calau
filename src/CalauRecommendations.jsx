@@ -26,6 +26,29 @@ const CalauRecommendations = () => {
     }
   };
 
+  const handleQuickShare = async () => {
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    const title = `Recomendações — ${brand}`;
+    // Try Web Share API first
+    if (navigator.share) {
+      try {
+        await navigator.share({ title, text: 'Vê estas recomendações', url });
+        return;
+      } catch (err) {
+        // fall through to clipboard fallback
+        console.warn('Native share failed:', err);
+      }
+    }
+
+    // Fallback: copy to clipboard
+    try {
+      await navigator.clipboard.writeText(url);
+      alert('Ligação copiada para a área de transferência.');
+    } catch (e) {
+      alert('Não foi possível partilhar nem copiar a ligação.');
+    }
+  };
+
   const gallery = useMemo(() => assetUrls
     .split('\n')
     .map(s => s.trim())
@@ -481,9 +504,9 @@ const CalauRecommendations = () => {
             <button onClick={handleCopyLink} className="flex items-center gap-2 bg-white border px-4 py-2 rounded-lg hover:bg-gray-50">
               <Copy className="w-4 h-4"/> Copiar ligação
             </button>
-            <a href="#" className="flex items-center gap-2 text-blue-600 hover:underline">
+            <button onClick={handleQuickShare} type="button" className="flex items-center gap-2 text-blue-600 hover:underline">
               <LinkIcon className="w-4 h-4"/> Partilha rápida
-            </a>
+            </button>
           </div>
         </div>
 
